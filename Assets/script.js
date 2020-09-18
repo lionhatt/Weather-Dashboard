@@ -1,15 +1,12 @@
 var cities = [];
-
 var city;
-
 var queryURL;
 
-// localStorage.clear();
-
+// display the list of cities saved in the local storage
 init();
 
-$(".btn").click(function (event) {
-    event.preventDefault();
+// click event to add city in the list and display weather content
+$(".btn").click(function () {
     clearContent();
     city = $("input").val().toLowerCase();
     renderWeather();
@@ -17,22 +14,22 @@ $(".btn").click(function (event) {
         cities.push(city);
         localStorage.setItem("cities", JSON.stringify(cities));
         $("input").val("");
-        console.log(localStorage);
         renderCites();
     }else {
         $("input").val("");
     }
 })
 
+//function to call list of cities from local storage
 function init() {
     var storedCities = JSON.parse(localStorage.getItem("cities"));
     if (storedCities !== null) {
         cities = storedCities;
     }
-    console.log("cities list: " + cities);
     renderCites();
 }
 
+//function to add city in to cities array
 function renderCites() {
     $(".cities").html("");
     $(cities).each(function (index, value) {
@@ -43,11 +40,13 @@ function renderCites() {
     })
 }
 
+// function to build the url for openweather API
 function buildQueryURL(city) {
     city = city.replace(/\s/g, "%20");
     queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=6a5c7d0e65c631220c8aac241678f555";
 }
 
+//function to call the openweahter API pbject, add using the oject to fill the weather content on the page 
 function renderWeather() {
 
     buildQueryURL(city);
@@ -56,11 +55,9 @@ function renderWeather() {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
         var cityName = response.city.name;
         var date = moment(response.list[0].dt_txt).format("l");
         var iconCode = response.list[0].weather[0].icon;
-        console.log(iconCode);
         var iconURL = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
         var iconImage = $("<img>");
         iconImage.attr({ src: iconURL, alt: iconCode });
@@ -117,20 +114,20 @@ function renderWeather() {
             var forecastHumidityDiv = $('<div class ="row">');
             forecastHumidityDiv.append("Humidity: "+ forecastHumidity+"%");
             forecastContDiv.append(forecastDateDiv, forecastIconDiv, forecastTempDiv, forecastHumidityDiv)
-
         }
     })
 }
 
+//add click event to the list of cities to display weather info
 $("li").each(function(){
     $(this).click(function(){
         clearContent();
         city = $(this).text();
         renderWeather();
-
     })
 })
 
+//function to clear the weather content
 function clearContent(){
     $("#city").html("");
     $("#icon").html("");
