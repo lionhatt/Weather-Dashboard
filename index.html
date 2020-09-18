@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="Assets/style.css">
+</head>
+
+<body>
+    <header class="container bg-dark">
+        <h1 class="text-center text-white">Weather Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div clss="col-md-3">
+                <div class="container bg-light">
+                    <div class="row searchSection">
+                        <h4>Search for a city:</h4>
+                    </div>
+                    <div class="row input-group searchSection">
+                        <input type="text" class="form-control">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">search</button>
+                        </div>
+                    </div>
+                    <div class="row searchSection">
+                        <ul class="list-group cities"></ul>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-9">
+                <div class="container">
+                    <div class="row weather">
+                        <div class="container">
+                            <div class="row">
+                                <h4 id="city"></h4>
+                            </div>
+                            <div class="row" id="icon"></div>
+                            <div class="row" id="temprature"></div>
+                            <div class="row" id="humidity"></div>
+                            <div class="row" id="wind"></div>
+                            <div class="row" id="uv"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="container">
+                            <div class="row">
+                                <h4>5-Day Forecast:</h4>
+                            </div>
+                            <div class="row forecast"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="Assets/script.js"></script>
+
+
+
+
+</body>
+
+</html>

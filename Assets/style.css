@@ -1,0 +1,41 @@
+.jumbotron {
+    text-align: center;
+}
+
+.searchSection {
+  padding-left: 10px;
+}
+
+ul {
+  padding-top: 10px;
+    width: 90%;
+}
+
+.weather {
+  border-style: solid;
+  border-color: gray;
+  border-width: 1px;
+  padding: 20px;
+
+}
+
+
+#low {
+  background-color: green;
+}
+
+#moderate {
+  background-color: yellow;
+}
+
+#high {
+  background-color: red;
+}
+
+
+.forecastDiv {
+  background-color: royalblue;
+  color: white;
+  border-style: solid;
+  border: black;
+}
